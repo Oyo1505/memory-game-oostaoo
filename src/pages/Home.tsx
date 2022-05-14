@@ -1,11 +1,12 @@
 import Board from "../components/Board";
 import ProgressBar from "../components/ProgressBar";
-import ButtonStart from "../components/ButtonStart";
+
+import ModalStart from "../components/Modal";
 const Home = () => {
   return (
     <>
+      <ModalStart />
       <Board />
-      <ButtonStart />
       <ProgressBar />
     </>
   );

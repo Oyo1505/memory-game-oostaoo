@@ -6,10 +6,16 @@ export type ContextProps = {
   openCards: any[];
   startGame: boolean;
   cardsChosen: any[];
+  message: string;
   handleStartGame: () => void;
   isCardChosen: (cardName: string, index: number) => boolean;
   startOver: () => void;
   timeOver: () => void;
+  closeModal: () => void;
+  modalIsOpen: boolean;
+  points: number;
+  playerName: string;
+  handleChange: (e: any) => void;
 };
 
 const StoreContext = createContext<ContextProps>({} as ContextProps);
@@ -18,13 +24,18 @@ interface props {
 }
 
 const StoreProviderWrapper = ({ children }: props) => {
+  //Game
   const [openCards, setOpenCards] = useState<any[]>([]);
   const [cardsChosen, setCardsChosen] = useState<any[]>([]);
   const [cardsChosenIds, setCardsChosenIds] = useState<any[]>([]);
   const [startGame, setStartGame] = useState<boolean>(false);
-
-  //Game
+  const [points, setPoints] = useState(0);
+  const [message, setMessage] = useState("");
   function startOver() {
+    if (playerName === "") {
+      setMessage("Player Name require");
+      return;
+    }
     handleStartGame();
   }
 
@@ -41,6 +52,7 @@ const StoreProviderWrapper = ({ children }: props) => {
         // Check if images are the same
 
         if (cardsChosen[0] === cardName) {
+          setPoints((points) => points + 2);
           setOpenCards((openCards) =>
             openCards?.concat([cardsChosen[0], cardName])
           );
@@ -71,25 +83,41 @@ const StoreProviderWrapper = ({ children }: props) => {
     setCardsChosen([]);
     setOpenCards([]);
     setStartGame(true);
+    closeModal();
   };
 
   //ProgressBar
-
   const timeOver = () => {
     setStartGame(false);
   };
+  //Modal
+  const [modalIsOpen, setIsOpen] = useState(true);
+  function closeModal() {
+    setIsOpen(false);
+  }
 
+  //Player
+  const [playerName, setPlayerName] = useState<string>("");
+  const handleChange = (e: any) => {
+    setPlayerName(e.target.value);
+  };
   return (
     <StoreContext.Provider
       value={{
+        playerName,
+        cardsChosen,
+        modalIsOpen,
+        openCards,
+        points,
+        startGame,
+        message,
+        startOver,
+        closeModal,
+        handleStartGame,
+        handleChange,
         handleOnclick,
         isCardChosen,
         timeOver,
-        cardsChosen,
-        startOver,
-        openCards,
-        startGame,
-        handleStartGame,
       }}
     >
       {children}
