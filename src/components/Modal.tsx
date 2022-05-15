@@ -6,8 +6,10 @@ import FormName from "./FormName";
 
 const ModalStart = () => {
   const { modalIsOpen } = useContext(StoreContext);
+  Modal.setAppElement("#root");
   return (
-    <Modal isOpen={modalIsOpen} contentLabel="Modal Start Game">
+    <Modal isOpen={modalIsOpen} className="modal" overlayClassName="Overlay">
+      <p>Votre pseudo</p>
       <FormName />
       <ButtonStart />
     </Modal>

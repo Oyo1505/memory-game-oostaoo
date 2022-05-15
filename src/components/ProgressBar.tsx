@@ -1,10 +1,12 @@
-import React, { FunctionComponent, useContext, useState } from "react";
+import { FunctionComponent, useContext, useState } from "react";
 //@ts-ignore
 import ProgressBar from "react-customizable-progressbar";
 import moment, { Moment } from "moment";
 import Timer from "./Timer";
 import { StoreContext } from "../utils/StoreContext";
-const totalSeconds = 3;
+import { IndicatorProps } from "../interfaces/interfaces";
+
+const totalSeconds = 10;
 const initialSeconds = 0;
 const initialProgress = (initialSeconds / totalSeconds) * 100;
 
@@ -12,26 +14,12 @@ const getText = (date: Moment) => {
   return date.format("s[s]");
 };
 
-interface IndicatorProps {
-  progress: number;
-  elapsedSeconds: number;
-}
-
 const Indicator: FunctionComponent<IndicatorProps> = (props) => {
   const seconds = totalSeconds - props.elapsedSeconds - initialSeconds;
   const date = moment().startOf("day").seconds(seconds);
 
   return (
-    <div className="indicator-countdown">
-      <div>
-        <div className={seconds > 0 ? "caption" : "caption big"}>
-          Il vous reste
-        </div>
-        <div className={seconds > 0 ? "time" : "time hidden"}>
-          {getText(date)}
-        </div>
-      </div>
-    </div>
+    <div className="indicator-countdown">Il vous reste {getText(date)}</div>
   );
 };
 
@@ -56,7 +44,7 @@ const ProgressBarTimer: FunctionComponent = () => {
     } else if (progress > 99 && !finishGame()) {
       timeOver();
     } else if (progress <= 99 && startGame && finishGame()) {
-      handleMessage("Gagnez");
+      handleMessage("Vous avez Gagné");
     }
   };
 

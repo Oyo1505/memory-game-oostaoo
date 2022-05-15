@@ -7,7 +7,11 @@ const ButtonStart = () => {
   return (
     <div>
       <Message />
-      <button style={{ display: startGame ? "none" : "" }} onClick={startOver}>
+      <button
+        style={{ display: startGame ? "none" : "" }}
+        className="button"
+        onClick={startOver}
+      >
         Start
       </button>
     </div>

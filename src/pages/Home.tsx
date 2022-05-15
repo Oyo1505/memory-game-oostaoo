@@ -5,9 +5,11 @@ import ModalStart from "../components/Modal";
 const Home = () => {
   return (
     <>
+      <div id="home">
+        <ProgressBar />
+        <Board />
+      </div>
       <ModalStart />
-      <Board />
-      <ProgressBar />
     </>
   );
 };

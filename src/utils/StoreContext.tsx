@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import cards from "../asset/json/card.json";
 
 export type ContextProps = {
@@ -89,7 +89,7 @@ const StoreProviderWrapper = ({ children }: props) => {
     closeModal();
   };
 
-  //ProgressBar
+  //TIMER
   const timeOver = () => {
     setStartGame(false);
     setMessage("Perdu");

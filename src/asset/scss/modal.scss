@@ -1,0 +1,23 @@
+.modal{
+    margin: 0 auto;
+    height: 130px;
+    width: 40%;
+    margin-top: 340px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.modal:focus {
+    outline: 0;
+  }
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(13, 17, 23, 0.9);
+}

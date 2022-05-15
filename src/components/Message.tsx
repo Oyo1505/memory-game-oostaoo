@@ -3,7 +3,7 @@ import { StoreContext } from "../utils/StoreContext";
 
 const Message = () => {
   const { message } = useContext(StoreContext);
-  return <div>{message}</div>;
+  return <div className="message">{message}</div>;
 };
 
 export default Message;
