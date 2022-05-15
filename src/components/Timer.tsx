@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  useState,
-  useEffect,
-  useContext,
-} from "react";
+import { FunctionComponent, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../utils/StoreContext";
 
 interface TimerProps {

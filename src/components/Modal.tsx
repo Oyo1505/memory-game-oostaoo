@@ -7,7 +7,7 @@ import FormName from "./FormName";
 const ModalStart = () => {
   const { modalIsOpen } = useContext(StoreContext);
   return (
-    <Modal isOpen={modalIsOpen} contentLabel="Example Modal">
+    <Modal isOpen={modalIsOpen} contentLabel="Modal Start Game">
       <FormName />
       <ButtonStart />
     </Modal>

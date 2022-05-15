@@ -4,7 +4,7 @@ import ProgressBar from "react-customizable-progressbar";
 import moment, { Moment } from "moment";
 import Timer from "./Timer";
 import { StoreContext } from "../utils/StoreContext";
-const totalSeconds = 10;
+const totalSeconds = 3;
 const initialSeconds = 0;
 const initialProgress = (initialSeconds / totalSeconds) * 100;
 
@@ -38,21 +38,25 @@ const Indicator: FunctionComponent<IndicatorProps> = (props) => {
 const ProgressBarTimer: FunctionComponent = () => {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [progress, setProgress] = useState(initialProgress);
-  const { timeOver, startGame } = useContext(StoreContext);
+  const { timeOver, startGame, finishGame, handleMessage } =
+    useContext(StoreContext);
+
   const roundProgress = (progress: number) => {
     const factor = Math.pow(10, 2);
     return Math.round(progress * factor) / factor;
   };
 
   const handleTimer = (elapsedSeconds: number) => {
-    if (progress <= 99 && startGame) {
+    if (progress <= 99 && startGame && !finishGame()) {
       const progress = roundProgress(
         ((elapsedSeconds + initialSeconds) / totalSeconds) * 100
       );
       setProgress(progress);
       setElapsedSeconds(elapsedSeconds);
-    } else {
+    } else if (progress > 99 && !finishGame()) {
       timeOver();
+    } else if (progress <= 99 && startGame && finishGame()) {
+      handleMessage("Gagnez");
     }
   };
 

@@ -2,20 +2,22 @@ import { createContext, useState, useEffect } from "react";
 import cards from "../asset/json/card.json";
 
 export type ContextProps = {
-  handleOnclick: (cardName: string, index: number) => void;
   openCards: any[];
   startGame: boolean;
   cardsChosen: any[];
   message: string;
+  modalIsOpen: boolean;
+  points: number;
+  playerName: string;
   handleStartGame: () => void;
   isCardChosen: (cardName: string, index: number) => boolean;
   startOver: () => void;
   timeOver: () => void;
   closeModal: () => void;
-  modalIsOpen: boolean;
-  points: number;
-  playerName: string;
+  handleOnclick: (cardName: string, index: number) => void;
   handleChange: (e: any) => void;
+  finishGame: () => boolean;
+  handleMessage: (str: string) => void;
 };
 
 const StoreContext = createContext<ContextProps>({} as ContextProps);
@@ -37,6 +39,7 @@ const StoreProviderWrapper = ({ children }: props) => {
       return;
     }
     handleStartGame();
+    setMessage("");
   }
 
   const evaluate = (cardName: string, index: number) => {
@@ -66,7 +69,7 @@ const StoreProviderWrapper = ({ children }: props) => {
   };
 
   const handleOnclick = (cardName: string, index: number) => {
-    if (startGame || finishGame()) {
+    if (startGame && !finishGame()) {
       evaluate(cardName, index);
     }
   };
@@ -76,7 +79,7 @@ const StoreProviderWrapper = ({ children }: props) => {
   }
 
   const finishGame = () => {
-    return cards.cards.length === openCards.length;
+    return cards.cards.length === openCards.length ? true : false;
   };
   const handleStartGame = () => {
     setCardsChosenIds([]);
@@ -89,6 +92,10 @@ const StoreProviderWrapper = ({ children }: props) => {
   //ProgressBar
   const timeOver = () => {
     setStartGame(false);
+    setMessage("Perdu");
+  };
+  const handleMessage = (str: string) => {
+    setMessage(str);
   };
   //Modal
   const [modalIsOpen, setIsOpen] = useState(true);
@@ -115,9 +122,11 @@ const StoreProviderWrapper = ({ children }: props) => {
         closeModal,
         handleStartGame,
         handleChange,
+        handleMessage,
         handleOnclick,
         isCardChosen,
         timeOver,
+        finishGame,
       }}
     >
       {children}
