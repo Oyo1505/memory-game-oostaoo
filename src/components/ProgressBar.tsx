@@ -43,8 +43,6 @@ const ProgressBarTimer: FunctionComponent = () => {
       setElapsedSeconds(elapsedSeconds);
     } else if (progress > 99 && !finishGame()) {
       timeOver();
-    } else if (progress <= 99 && startGame && finishGame()) {
-      handleMessage("Vous avez Gagné");
     }
   };
 

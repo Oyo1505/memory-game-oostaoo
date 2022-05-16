@@ -93,7 +93,6 @@ const StoreProviderWrapper = ({ children }: props) => {
   //TIMER
   const timeOver = () => {
     setStartGame(false);
-    setMessage("Perdu");
   };
   const handleMessage = (str: string) => {
     setMessage(str);

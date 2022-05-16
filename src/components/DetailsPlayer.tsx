@@ -8,7 +8,6 @@ const DetailsPlayer: FC = () => {
     <div id="details-player">
       <NamePlayer />
       <Points />
-      <Message />
     </div>
   );
 };
