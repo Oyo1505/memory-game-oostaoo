@@ -124,8 +124,8 @@ const StoreProviderWrapper = ({ children }: props) => {
   //Update score o local storage
   const updateScore = useCallback(() => {
     if (points > items.points) {
+      localStorage.setItem("items", JSON.stringify({ playerName, points }));
       setItems({ playerName, points });
-      localStorage.setItem("items", JSON.stringify(items));
     }
   }, [points, items, playerName]);
 
@@ -135,9 +135,9 @@ const StoreProviderWrapper = ({ children }: props) => {
 
   useEffect(() => {
     if ((!startGame || finishGame()) && points > items.points && points > 0) {
-      localStorage.setItem("items", JSON.stringify(items));
+      updateScore();
     }
-  }, [startGame, finishGame, items, playerName, points]);
+  }, [startGame, finishGame, items, playerName, points, updateScore]);
   return (
     <StoreContext.Provider
       value={{

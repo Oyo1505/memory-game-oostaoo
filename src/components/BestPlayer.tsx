@@ -12,7 +12,7 @@ const BestPlayer: FC = () => {
       setItems(items);
     }
   }, [items]);
-  console.log(items);
+
   if (!itemsLocal.playerName && !itemsLocal.points)
     return <p>Personne à joué</p>;
   return (
