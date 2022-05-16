@@ -11,3 +11,8 @@ export interface CardInterface {
     progress: number;
     elapsedSeconds: number;
 }
+
+export  interface PointsInterface {
+    name: string;
+    points : number;
+}

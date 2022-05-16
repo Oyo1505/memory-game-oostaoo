@@ -1,6 +1,7 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Card from "./Card";
 import { CardInterface } from "../interfaces/interfaces";
+
 const ListCards: FC<{ cards: Array<CardInterface> }> = ({ cards }) => {
   if (cards.length === 0) return <p>Loading</p>;
   return (
@@ -13,7 +14,7 @@ const ListCards: FC<{ cards: Array<CardInterface> }> = ({ cards }) => {
               name={card.name}
               image={card.image}
               index={index}
-              key={card.id}
+              key={index}
             />
           </>
         ))}

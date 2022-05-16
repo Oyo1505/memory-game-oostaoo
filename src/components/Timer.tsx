@@ -21,7 +21,6 @@ const Timer: FunctionComponent<TimerProps> = ({
     if (startGame) {
       start(intervalId);
     }
-
     return () => clear(intervalId);
   }, [startGame]);
 

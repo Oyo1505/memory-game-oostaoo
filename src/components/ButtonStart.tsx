@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { StoreContext } from "../utils/StoreContext";
 import Message from "./Message";
-const ButtonStart = () => {
+const ButtonStart: FC = () => {
   const { startOver, startGame } = useContext(StoreContext);
 
   return (
-    <div>
+    <div style={{ width: "200px" }}>
       <Message />
       <button
         style={{ display: startGame ? "none" : "" }}

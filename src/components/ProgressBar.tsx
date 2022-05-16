@@ -55,12 +55,12 @@ const ProgressBarTimer: FunctionComponent = () => {
           radius={100}
           progress={progress}
           strokeWidth={5}
-          strokeColor="indianred"
+          strokeColor="#2320e5"
           trackStrokeWidth={3}
           trackStrokeColor="#e6e6e6"
           pointerRadius={5}
           pointerStrokeWidth={2}
-          pointerStrokeColor="indianred"
+          pointerStrokeColor="#2320e5"
         >
           <Indicator progress={progress} elapsedSeconds={elapsedSeconds} />
         </ProgressBar>

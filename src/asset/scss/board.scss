@@ -3,5 +3,8 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-
+    font-size: 1.5em;
+    .best-score{
+        margin-top: 10px;
+    }
 }

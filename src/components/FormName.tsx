@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import { FC, useContext } from "react";
 import { StoreContext } from "../utils/StoreContext";
 
-const FormName = () => {
+const FormName: FC = () => {
   const { handleChange, playerName } = useContext(StoreContext);
   return (
     <div>

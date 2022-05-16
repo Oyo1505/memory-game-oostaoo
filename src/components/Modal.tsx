@@ -1,17 +1,19 @@
 import ButtonStart from "./ButtonStart";
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { StoreContext } from "../utils/StoreContext";
 import Modal from "react-modal";
 import FormName from "./FormName";
 
-const ModalStart = () => {
+const ModalStart: FC = () => {
   const { modalIsOpen } = useContext(StoreContext);
   Modal.setAppElement("#root");
   return (
     <Modal isOpen={modalIsOpen} className="modal" overlayClassName="Overlay">
-      <p>Votre pseudo</p>
-      <FormName />
-      <ButtonStart />
+      <div>
+        <p>Votre pseudo</p>
+        <FormName />
+        <ButtonStart />
+      </div>
     </Modal>
   );
 };
