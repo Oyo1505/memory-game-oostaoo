@@ -5,11 +5,12 @@ import Modal from "react-modal";
 import FormName from "./FormName";
 
 const ModalStart: FC = () => {
-  const { modalIsOpen } = useContext(StoreContext);
+  const { modalIsOpen, totalSeconds } = useContext(StoreContext);
   Modal.setAppElement("#root");
   return (
     <Modal isOpen={modalIsOpen} className="modal" overlayClassName="Overlay">
       <div>
+        <p>Vous avez {totalSeconds} secondes</p>
         <p>Votre pseudo</p>
         <FormName />
         <ButtonStart />

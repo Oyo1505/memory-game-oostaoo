@@ -6,15 +6,12 @@ import Timer from "./Timer";
 import { StoreContext } from "../utils/StoreContext";
 import { IndicatorProps } from "../interfaces/interfaces";
 
-const totalSeconds = 10;
-const initialSeconds = 0;
-const initialProgress = (initialSeconds / totalSeconds) * 100;
-
 const getText = (date: Moment) => {
   return date.format("s[s]");
 };
 
 const Indicator: FunctionComponent<IndicatorProps> = (props) => {
+  const { totalSeconds, initialSeconds } = useContext(StoreContext);
   const seconds = totalSeconds - props.elapsedSeconds - initialSeconds;
   const date = moment().startOf("day").seconds(seconds);
 
@@ -24,10 +21,11 @@ const Indicator: FunctionComponent<IndicatorProps> = (props) => {
 };
 
 const ProgressBarTimer: FunctionComponent = () => {
+  const { totalSeconds, initialSeconds, initialProgress } =
+    useContext(StoreContext);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [progress, setProgress] = useState(initialProgress);
-  const { timeOver, startGame, finishGame, handleMessage } =
-    useContext(StoreContext);
+  const { timeOver, startGame, finishGame } = useContext(StoreContext);
 
   const roundProgress = (progress: number) => {
     const factor = Math.pow(10, 2);

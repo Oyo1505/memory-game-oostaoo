@@ -30,7 +30,6 @@ const Timer: FunctionComponent<TimerProps> = ({
 
   const start = (intervalId: number | undefined) => {
     clear(intervalId);
-
     const newIntervalId = window.setInterval(() => {
       if (elapsed + initialSeconds === totalSeconds) return;
 

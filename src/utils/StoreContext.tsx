@@ -10,6 +10,9 @@ export type ContextProps = {
   points: number;
   playerName: string;
   items: object;
+  totalSeconds: number;
+  initialSeconds: number;
+  initialProgress: number;
   handleStartGame: () => void;
   isCardChosen: (cardName: string, index: number) => boolean;
   startOver: () => void;
@@ -91,6 +94,9 @@ const StoreProviderWrapper = ({ children }: props) => {
   };
 
   //TIMER
+  const totalSeconds = 10;
+  const initialSeconds = 0;
+  const initialProgress = (initialSeconds / totalSeconds) * 100;
   const timeOver = () => {
     setStartGame(false);
   };
@@ -137,10 +143,12 @@ const StoreProviderWrapper = ({ children }: props) => {
       updateScore();
     }
   }, [startGame, finishGame, items, playerName, points, updateScore]);
+
   return (
     <StoreContext.Provider
       value={{
         playerName,
+        totalSeconds,
         cardsChosen,
         modalIsOpen,
         openCards,
@@ -148,6 +156,8 @@ const StoreProviderWrapper = ({ children }: props) => {
         startGame,
         message,
         items,
+        initialSeconds,
+        initialProgress,
         startOver,
         closeModal,
         handleStartGame,
