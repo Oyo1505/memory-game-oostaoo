@@ -1,12 +1,6 @@
 import { FunctionComponent, useState, useEffect, useContext } from "react";
 import { StoreContext } from "../utils/StoreContext";
-
-interface TimerProps {
-  initialSeconds: number;
-  totalSeconds: number;
-  onChange?: (value: number) => void;
-  interval: number;
-}
+import { TimerProps } from "../interfaces/interfaces";
 
 const Timer: FunctionComponent<TimerProps> = ({
   initialSeconds,

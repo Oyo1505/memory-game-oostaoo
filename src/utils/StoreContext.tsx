@@ -46,6 +46,7 @@ const StoreProviderWrapper = ({ children }: props) => {
     handleStartGame();
     setMessage("");
   }
+
   //eveluate two cards cards
   const evaluate = (cardName: string, index: number) => {
     if (cardsChosenIds?.length === 1 && cardsChosenIds[0] === index) {
@@ -58,7 +59,6 @@ const StoreProviderWrapper = ({ children }: props) => {
 
       if (cardsChosen?.length === 1) {
         // Check if images are the same
-
         if (cardsChosen[0] === cardName) {
           setPoints((points) => points + 2);
           setOpenCards((openCards) =>
@@ -86,6 +86,7 @@ const StoreProviderWrapper = ({ children }: props) => {
   const finishGame = useCallback(() => {
     return cards.cards.length === openCards.length ? true : false;
   }, [openCards]);
+
   const handleStartGame = () => {
     setCardsChosenIds([]);
     setCardsChosen([]);

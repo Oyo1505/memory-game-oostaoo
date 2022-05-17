@@ -1,6 +1,5 @@
 export interface Todo {
     name: string;
-  
 }
 export interface CardInterface {
     id: number;
@@ -16,3 +15,9 @@ export  interface PointsInterface {
     name: string;
     points : number;
 }
+export interface TimerProps {
+    initialSeconds: number;
+    totalSeconds: number;
+    onChange?: (value: number) => void;
+    interval: number;
+  }
