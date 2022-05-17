@@ -5,7 +5,7 @@ import { StoreContext, StoreProviderWrapper } from "../utils/StoreContext";
 
 describe("<Message />", () => {
   const MessageComponent = () => {
-    const { message } = useContext(StoreContext);
+    const message = "message";
     return (
       <div data-testid="message-test" className="message">
         {message}
@@ -13,11 +13,11 @@ describe("<Message />", () => {
     );
   };
   test("it render correctly", () => {
-    const { queryByTestId } = render(
-      <StoreProviderWrapper>
-        <MessageComponent />
-      </StoreProviderWrapper>
-    );
+    const { queryByTestId } = render(<MessageComponent />);
     expect(queryByTestId("message-test")).toBeTruthy();
+  });
+  test("it text message correctly", () => {
+    const { getByText } = render(<MessageComponent />);
+    expect(getByText("message")).toBeDefined();
   });
 });

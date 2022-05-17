@@ -1,7 +1,7 @@
 .modal{
     margin: 0 auto;
     height: auto;
-    width: 20%;
+    width: 100%;
     margin-top: 340px;
     background-color: $white;
    
@@ -28,4 +28,10 @@
     right: 0;
     bottom: 0;
     background-color: $background-grey ;
+}
+
+@media only screen and (min-width: 900px) {
+    .modal{
+        width: 20%;
+    }
 }

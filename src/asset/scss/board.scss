@@ -8,3 +8,9 @@
         margin-top: 10px;
     }
 }
+
+@media only screen and (min-width: 2000px) {
+    #board{
+        max-width: 25%;
+    }
+}

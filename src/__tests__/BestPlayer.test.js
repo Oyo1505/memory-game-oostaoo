@@ -34,4 +34,14 @@ describe("Best Player", () => {
     );
     expect(queryByTestId("best-player")).toBeTruthy();
   });
+  test("it text message correctly", () => {
+    const { getByText } = render(
+      <StoreProviderWrapper>
+        <BestPlayerComponent />
+      </StoreProviderWrapper>
+    );
+    expect(
+      getByText("Le meilleur joueur est test avec 0 points")
+    ).toBeDefined();
+  });
 });

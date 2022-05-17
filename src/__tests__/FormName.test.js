@@ -11,7 +11,7 @@ describe("<FormName />", () => {
         <input
           data-testid="form-name"
           type="text"
-          value={playerName}
+          value={"test"}
           required
           onChange={handleChange}
         />
@@ -26,5 +26,16 @@ describe("<FormName />", () => {
     );
     const form = queryByTestId("form-name");
     expect(form).toBeInTheDocument();
+    expect(form.value).toBe("test");
+  });
+  test("it test value input ", () => {
+    const { queryByTestId } = render(
+      <StoreProviderWrapper>
+        <FormName />
+      </StoreProviderWrapper>
+    );
+    const form = queryByTestId("form-name");
+    expect(form).toBeInTheDocument();
+    expect(form.value).toBe("test");
   });
 });
