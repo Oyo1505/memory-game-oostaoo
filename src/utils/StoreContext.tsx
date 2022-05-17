@@ -37,15 +37,16 @@ const StoreProviderWrapper = ({ children }: props) => {
   const [startGame, setStartGame] = useState<boolean>(false);
   const [points, setPoints] = useState(0);
   const [message, setMessage] = useState("");
+  //Start the game
   function startOver() {
-    if (playerName === "") {
+    if (playerName.trim() === "") {
       setMessage("Player Name require");
       return;
     }
     handleStartGame();
     setMessage("");
   }
-
+  //eveluate two cards cards
   const evaluate = (cardName: string, index: number) => {
     if (cardsChosenIds?.length === 1 && cardsChosenIds[0] === index) {
       return;

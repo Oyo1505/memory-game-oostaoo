@@ -12,7 +12,10 @@ const Card: FC<{
   };
 
   return (
-    <div className={`cards `} onClick={() => handleClick(name, index)}>
+    <div
+      className={`cards ${isCardChosen(name, index) ? "is-flipped" : ""}`}
+      onClick={() => handleClick(name, index)}
+    >
       <img
         src={
           isCardChosen(name, index)

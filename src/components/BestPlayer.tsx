@@ -17,7 +17,7 @@ const BestPlayer: FC = () => {
     return <p>Personne à joué</p>;
   return (
     <div className="best-score">
-      Le meilleur joueur est {itemsLocal.playerName} avec {itemsLocal.points}{" "}
+      Le meilleur joueur est {itemsLocal.playerName} avec {itemsLocal.points}
       points
     </div>
   );
