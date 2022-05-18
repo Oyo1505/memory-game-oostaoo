@@ -7,11 +7,7 @@ const ButtonStart: FC = () => {
   return (
     <div style={{ width: "200px" }}>
       <Message />
-      <button
-        style={{ display: startGame ? "none" : "" }}
-        className="button"
-        onClick={startOver}
-      >
+      <button className="button" onClick={startOver}>
         Start
       </button>
     </div>
